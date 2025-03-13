@@ -1,0 +1,76 @@
+.nav_header_container {
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    padding: 10px 50px;
+    color: #fff;
+    background-image: url("https://res.cloudinary.com/dksgsqhdk/image/upload/v1741666926/Screenshot_2025-03-10_195622_jwey9j.png");
+    background-size: cover;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+.nav_links_container {
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
+    list-style-type: none;
+}
+.login_button {
+    border: 1px solid #fff;
+    padding: 4px 18px;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    
+}   
+.register_button{
+    padding: 4px 18px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #c61010f7;
+    border: 0px;
+    cursor: pointer;
+    outline: none;
+}
+
+.login_button:hover {
+    background-color: #fff;
+    color: #dc0808;
+    font-weight: 700;
+}
+.register_button:hover{
+    background-color: #c61010a0;
+    color: #fff;
+    font-weight: 700;
+}
+.nav_link_item {
+    color: #fff;
+    text-decoration: none;
+}
+.profile_image {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+@media screen and (max-width:767px){
+    .nav_links_container {
+        width: 50%;
+    }
+    .nav_header_container{
+        height: 70px;
+        border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:992px){
+    .nav_links_container {
+        width: 20%;
+    }
+}

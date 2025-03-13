@@ -1,0 +1,106 @@
+.job_info_item {
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.company_info_logo {
+    width: 50px;
+    height: 45px;
+}
+.india_logo {
+    margin-right: 5px;
+    margin-left: 30px;
+    height: 30px;
+    width: 45px;
+
+}
+.company_name_location_job_type_container {
+    display: flex;
+    flex-direction: column;
+    line-height: 1px;
+    width: 100%;
+    margin-left: 20px;
+}
+.size_rupee_location_container {
+    display: flex;
+    align-items: center;
+    color: #393838bc;
+    width: 200px;
+}
+.remote_office_job_type_container {
+    color: red;
+    font-size: 13px;
+}
+.remote_office_title {
+    margin-right: 20px;
+}
+.location_title {
+    font-size: 13px;
+}
+.skill_set_info_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+    list-style-type: none;
+}
+.each_skill_title {
+    margin-left: 10px;
+    font-size: 10px;
+    padding:3px 10px;
+    background-color: #ea434326;
+    font-weight: 600;
+}
+.view_details_button_container {
+    display: flex;
+    align-self: flex-end;
+    justify-content: end;
+    margin-top: 15px;   
+}
+.view_details_button {
+    background-color: #ea4343e7;
+    color: #fff;
+    border: 0px;
+    font-size: 12px;
+    padding: 5px 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+.edit_details_button {
+    margin-right: 10px;
+    background-color: transparent;
+    color: #ea4343e7;
+    padding: 5px 10px;
+    cursor: pointer;
+    outline: none;
+    font-size: 12px;
+    border: 1px solid #716e6e80;
+}
+.job_link_item {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media screen and (max-width:767px){
+    .india_logo {
+        height: 25px;
+        width: 35px;
+        margin-left: 15px;
+    }
+    .size_rupee_location_container {
+        width: 250px;
+    }
+}
+@media screen and (min-width:992px){
+    .size_rupee_location_container {
+        width: 300px;;
+    }
+}
+
+@media screen and (min-width:1200px){
+    .size_rupee_location_container {
+        width: 400px;;
+    }
+}

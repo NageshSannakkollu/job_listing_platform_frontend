@@ -1,0 +1,12 @@
+.terms_policy_checkbox_container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.terms_policy_checkbox_container label {
+    font-size: 10px;
+}
+.create_acc_btn {
+    width: 150px;
+    font-size: 15px;
+}
