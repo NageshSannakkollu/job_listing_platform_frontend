@@ -21,7 +21,7 @@ const AddJobDetails = () => {
         event.preventDefault()
         const jobFullDetails = {...jobDetails,selectedSkills}
         console.log("jobDetails:",jobFullDetails)
-        const response = await axios.post("https://67d25c961161f3c2ca952340--job-listing-backend.netlify.app/api/jobs",jobFullDetails)
+        const response = await axios.post("https://job-listing-backend.netlify.app/api/jobs",jobFullDetails)
         console.log("Response:",response.data)
         if(response.data.success){  
             Cookies.set('jwtToken', response.data.jwtToken, {expires: 30})
