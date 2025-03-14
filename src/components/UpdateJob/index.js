@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { toast } from "react-toastify"
 import { Link,useNavigate, useParams } from "react-router-dom"
-import Cookies from "js-cookie"
 import axios from "axios";
 
 import "./index.css"
@@ -21,10 +20,14 @@ const UpdateJob = () => {
     console.log("updatedId:",id)
     useEffect(() => {
         const getSpecificJOb = async() => {
-            const response = await axios.get(`https://job-listing-backend.netlify.app/api/jobs/${id}`)
-            const data = await response.data;
-            console.log("Data:",data)
-            setJobValues([data])
+            try {
+                const response = await axios.get(`http://localhost:3025/api/jobs/${id}`)
+                const data = await response.data;
+                console.log("Data:",data)
+                setJobValues([data])
+            } catch (error) {
+                console.log(error.message)
+            }
         }
         getSpecificJOb()
     },[])
@@ -33,14 +36,15 @@ const UpdateJob = () => {
         event.preventDefault()
         const jobDetailsInfo = jobValues[0]
         console.log("jobDetailsInfo:",jobDetailsInfo)
-        const response = await axios.put(`https://job-listing-backend.netlify.app/api/jobs/${id}`,jobValues[0])
+        const response = await axios.put(`http://localhost:3025/api/jobs/${id}`,jobValues[0])
             const data = await response.data;
-            console.log()
             if(data.success){
                 toast.success(data.message)
                 navigate("/")
+            }else{
+                toast.error(data.message)
             }
-            toast.error(data.message)
+            
     } 
 
     const selectSkillHandler = event => {
@@ -116,8 +120,11 @@ const UpdateJob = () => {
                 <input type='text' value={eachItem.information} onChange={e => setJobValues([{...jobValues[0],information:e.target.value}])} className='email_input_job_description' required/>
             </div>
             <div className='cancel_sign_in_buttons_container'>
-                <button type='submit' className='add_button'>Update Job</button>
-            </div>
+                <Link to="/"> 
+                    <button type='button' className='cancel_button'>Cancel</button>
+                </Link>
+                    <button type='submit' className='add_button'>Update</button>
+                </div>
         </div>
             )
         })}

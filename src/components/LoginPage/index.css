@@ -92,3 +92,14 @@
         font-size: 16px;
     }
 }
+
+@media screen and (max-width:992px){
+    .login_page_inside_container {
+        width: 80vw;
+    }
+}
+@media screen and (min-width:992px){
+    .login_page_inside_container {
+        width: 80vw;
+    }
+}

@@ -4,8 +4,8 @@
 }
 .job_information_title_container {
     position: fixed;
-    width: 83%;
-    top: 65px;
+    width: 91.5%;
+    top: 85px;
     background-color: #fff;
     box-shadow: 0px 0px 17px 0px #00000024;
     padding: 10px 30px;
@@ -14,7 +14,7 @@
 .job_details_inside_container {
     margin-top: 190px;
     box-shadow: 0px 0px 17px 0px #00000024;
-    height: 100vh;
+    min-height: 100vh;
     padding: 6px 30px;
 }
 
@@ -57,9 +57,32 @@
 }
 @media screen and (max-width:767px){
     .job_information_title_container {
-        width: 81.5%;
+        width: 89%;
+        top: 75px;
     }
     .job_details_main_page {
         padding: 0px 40px;
+    }
+    .admin_page_job_info_first_line{
+        width: 60%;
+    }
+    .stipend_duration_container {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width:992px){
+    .job_information_title_container {
+        width: 89%;
+        top: 75px;
+    }
+    .job_details_main_page {
+        padding: 0px 40px;
+    }
+    .admin_page_job_info_first_line{
+        width: 60%;
+    }
+    .stipend_duration_container {
+        width: 35%;
     }
 }

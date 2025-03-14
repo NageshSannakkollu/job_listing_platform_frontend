@@ -1,0 +1,28 @@
+.default_skill_info_list_item {
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    margin-right: 20px;
+    padding: 0px 2px;
+    padding: -10px 10px;
+    background-color: #ea434326;
+}
+.default_skill_info_list_item p{
+    margin-right: 5px;
+    cursor: pointer;
+    outline: none;
+}
+.cancel_icon {
+    color: red;
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+    outline: none;
+}
+.skill_button {
+    border: 0px;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 3px 5px;
+}

@@ -5,8 +5,10 @@ import { CiSearch } from "react-icons/ci";
 import "./index.css"
 import JobsInfoCard from '../JobsInfoCard';
 import Cookies from 'js-cookie'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import DefaultSkill from '../DefaultSkill';
 
 const skillSet = [
     {
@@ -23,15 +25,15 @@ const skillSet = [
     },
     {
         id:4,
-        skillName:"Java"
-    },
-    {
-        id:5,
         skillName:"ReactJs"
     },
     {
-        id:6,
+        id:5,
         skillName:"NodeJs"
+    },
+    {
+        id:6,
+        skillName:"MongoDB"
     },
 ]
 
@@ -132,16 +134,18 @@ const sampleJobsListInfo = [
 // ]
 
 const LandingPage =  () => {
-    const [defaultSkills,setDefaultSkill] = useState(skillSet[0].skillName)
+    const [defaultSkills,setDefaultSkill] = useState([{id:1,skillName:'HTML'},{id:2,skillName:'CSS'},{id:3,skillName:'Javascript'}])
     const [selectedSkills,setSelectedSkills] = useState([skillSet[0].skillName])
     const [userProfile,setUserProfile] = useState("")
     const [sampleJobsListInfo,setSampleJobsListInfo] = useState([])
     const [deleteJobFormList,setDeleteJob] = useState(true)
     const [searchInput,setSearchInput] = useState('')
     // console.log("defaultSkills:",defaultSkills)
-
+    // const navigate = useNavigate()
     const jwtToken = Cookies.get('jwtToken')
-    
+    // if (jwtToken === undefined){
+    //     navigate("/login")
+    // }
     const changeInInput = event => {
         setSearchInput(event.target.value)
     }
@@ -149,7 +153,7 @@ const LandingPage =  () => {
     useEffect(()=>{
         const getProfileDetails = async() => {
             try {
-                const response = await fetch("https://job-listing-backend.netlify.app/api/auth/profile",{
+                const response = await fetch("http://localhost:3025/api/auth/profile",{
                     method:'GET',
                     headers:{
                         "Authorization":`Bearer ${jwtToken}`,
@@ -157,8 +161,8 @@ const LandingPage =  () => {
                     }
                 });
                 const data = await response.json();
-                console.log(data.user)
-                setUserProfile(data.user.role)
+                // console.log("Prof:",data.user)
+                setUserProfile(data.user)
 
             } catch (error) {
                 console.error('Error Fetching profile Details')
@@ -168,7 +172,7 @@ const LandingPage =  () => {
         const getJobsList = async() => {
             if(deleteJobFormList){
                 setDeleteJob(false)
-            const response = await axios.get('https://job-listing-backend.netlify.app/api/jobs')
+            const response = await axios.get('http://localhost:3025/api/jobs')
             setSampleJobsListInfo(response.data)
         }
     }
@@ -177,41 +181,50 @@ const LandingPage =  () => {
 
     },[deleteJobFormList])
 
-    const deleteJob = (id) => {
+    const deleteJob = async(id) => {
     // console.log("delete Id:",id)
-    axios.delete(`https://job-listing-backend.netlify.app/api/jobs/${id}`)
-    .then(response => {
-      console.log(response)
-      setDeleteJob(true)
-    }).catch(err => {
-      console.log(err)
-    })
+    const response = await axios.delete(`http://localhost:3025/api/jobs/${id}`)
+    
+      if(response.data.success){
+        toast.success("Delete Job Successfully")
+        setDeleteJob(true)
+      }
+      else{
+        toast.error(response.data.message)
+      }
+  }
+
+  const deleteDefaultSkill = (id)=>{
+    const filterDeleteSkills = defaultSkills.filter(skill=>skill.id !== id)
+    setDefaultSkill(filterDeleteSkills)
   }
 
     // console.log("sampleJobsListInfo:",typeof sampleJobsListInfo)
 
     const onChangeDefaultSkill = event => {
-        setDefaultSkill(event.target.value)
-        setSelectedSkills([...selectedSkills,event.target.value])
+        const selectedValue =event.target.value
+        setSearchInput(selectedValue)
     }
 
-    const selectedSkillList = [new Set(selectedSkills)]
-    // console.log("selectedSkillList:",selectedSkillList)
+    // const selectedSkillList = [new Set(selectedSkills)]
+    // console.log("selectedSkillList:",selectedSkills)
     // console.log("userProfile:",searchInput)
+
     const filterJobs = sampleJobsListInfo.filter(skill => 
         skill.companyName.toLowerCase().includes(searchInput.toLowerCase()) || 
         skill.jobPosition.toLowerCase().includes(searchInput.toLowerCase()) ||
         skill.jobType.toLowerCase().includes(searchInput.toLowerCase()) ||
-        skill.location.toLowerCase().includes(searchInput.toLowerCase())
+        skill.location.toLowerCase().includes(searchInput.toLowerCase())||
+        skill.remoteOrOffice.toLowerCase().includes(searchInput.toLowerCase())||
+        skill.selectedSkills.toLowerCase().includes(searchInput.toLowerCase())
     )
     
-    const onKeyDownSearch = event => {
-        if(event.target.value ==='Enter'){
-            console.log("filterJobs:",filterJobs)
-        }
+    const clickOnClear = () => {   
+        setSearchInput("")
     }
-    const clickOnClear = () => {
-        
+
+    const clickOnSelectedSkill = (skill) => {
+        setSearchInput(skill)
     }
 
   return (
@@ -222,7 +235,7 @@ const LandingPage =  () => {
             <div className='search_container'>
             <div className='search_inside_container'>
                 <CiSearch className='search_icon'/>
-                <input type='search' value={searchInput} placeholder='Type any job title' onChange={changeInInput} onKeyDown={onKeyDownSearch} className='input_search'/>
+                <input type='search' value={searchInput} placeholder='Type any job title' onChange={changeInInput} className='input_search'/>
             </div>
             <div className='select_skills_filter_cancel_button_container'>
             <select onChange={onChangeDefaultSkill} className='select_skills_container'>
@@ -230,8 +243,31 @@ const LandingPage =  () => {
                     <option key={eachSkill.id}>{eachSkill.skillName}</option>
                 ))}
             </select>
+            <ul className='default_skill_set_list'>
+                {defaultSkills.map((skill) => (
+                    <DefaultSkill skillInfo={skill} key={skill.id} deleteDefaultSkill={deleteDefaultSkill} clickOnSelectedSkill={clickOnSelectedSkill}/>
+                ))}
+            </ul>
             <div className="apply_filter_cancel_buttons_container">
-            {userProfile==="admin" ? 
+            {jwtToken===undefined || userProfile.role ==="user" ?
+                <>
+                    <button type='button' className='apply_filer_button'>Apply Filter</button>
+                    <button type='button' className='clear_filter_button' onClick={clickOnClear}>Clear</button>
+                </>
+                :
+                <>
+                    {userProfile.role==="admin" && 
+                <>
+                <Link to="/addJob">
+                    <button type='button' className='apply_filer_button'>+Add Job</button>
+                </Link>
+                    <button type='button' className='clear_filter_button' onClick={clickOnClear}>Clear</button>
+                </>
+                    }
+                </>
+                   
+            }
+            {/* {userProfile.role==="admin" ? 
             <>
                 <Link to="/addJob">
                     <button type='button' className='apply_filer_button'>+Add Job</button>
@@ -243,16 +279,22 @@ const LandingPage =  () => {
                     <button type='button' className='apply_filer_button'>Apply Filter</button>
                     <button type='button' className='clear_filter_button' onClick={clickOnClear}>Clear</button>
                 </>
-            }
+            } */}
                 </div>
               </div>
             </div>
         </div>
+        {filterJobs.length > 0 ? 
         <ul className='job_info_card_container'>
             {filterJobs.map(eachJob => (
                 <JobsInfoCard jobInfoDetails={eachJob} key={eachJob.id} userProfile={userProfile} deleteJob={deleteJob}/>
             ))}
         </ul>
+        :
+            <div className='no_jobs_container'>
+                <h3>No Jobs</h3>
+            </div>
+        }
         </div>
     </div>
   )

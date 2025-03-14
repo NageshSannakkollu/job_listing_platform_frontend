@@ -16,28 +16,26 @@ const AddJobDetails = () => {
     const [selectedSkills,setSelectSkills] = useState([]);
     const navigate = useNavigate()
 
+    const selectSkillHandler = event => {
+        const selectedValue = event.target.value 
+        if(selectedValue && !selectedSkills.includes(selectedValue)){
+            setSelectSkills([...selectedSkills,selectedValue])
+        }
+    }
 
     const addJobHandler = async(event) => {
         event.preventDefault()
         const jobFullDetails = {...jobDetails,selectedSkills}
         console.log("jobDetails:",jobFullDetails)
-        const response = await axios.post("https://67d25c961161f3c2ca952340--job-listing-backend.netlify.app/api/jobs",jobFullDetails)
+        const response = await axios.post("http://localhost:3025/api/jobs",jobFullDetails)
         console.log("Response:",response.data)
         if(response.data.success){  
-            Cookies.set('jwtToken', response.data.jwtToken, {expires: 30})
             toast.success(response.data.message)
             navigate("/")
         }else{
             toast.error(response.data.message)
         }
         
-    }
-
-    const selectSkillHandler = event => {
-        const selectedValue = event.target.value 
-        if(selectedValue && !selectedSkills.includes(selectedValue)){
-            setSelectSkills([...selectedSkills,selectedValue])
-        }
     }
     
   return (

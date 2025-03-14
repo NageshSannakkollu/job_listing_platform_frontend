@@ -3,7 +3,6 @@
     padding: 30px 70px;
 }
 .search_container {
-
     padding: 30px 50px;
 }
 .search_jobs_main_container {
@@ -68,6 +67,21 @@
     margin-left: 0px;
     padding-left: 0px;
     margin-top: 50px;
+}
+.no_jobs_container {
+    display: flex;
+    flex-direction: column;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+}
+.default_skill_set_list {
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+    padding-left: 0px;
+    flex-wrap: wrap;
+    line-height: 1px;
 }
 @media screen and (max-width:767px){
     .apply_filter_cancel_buttons_container {

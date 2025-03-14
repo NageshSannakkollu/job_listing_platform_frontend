@@ -10,18 +10,17 @@ const JobsInfoCard = (props) => {
     const {jobInfoDetails,userProfile,deleteJob} = props
     const {id,companyName,addLogoUrl,jobType,remoteOrOffice,location,selectedSkills,companySize,monthlySalary} = jobInfoDetails
     const selectedSkillsSet = JSON.parse(selectedSkills)
-    // console.log("addLogoUrl:",addLogoUrl)
+    // console.log("userProdield:",userProfile)
     const clickOnDelete = () =>{
         deleteJob(id)
     }
   return (
-    
     <li className='search_jobs_main_container job_info_item'>
         <img src={addLogoUrl} alt={companyName} className='company_info_logo'/>
         <div className='company_name_location_job_type_container'>
             <p>{companyName}</p>
             <div className='size_rupee_location_container'>
-                <div className='size_rupee_location_container'>
+                <div className='company_size_rupee_location_container'>
                     <AiOutlineTeam />
                     <p className='location_title'>{companySize}</p>
                 </div>
@@ -49,8 +48,14 @@ const JobsInfoCard = (props) => {
             </ul>
             <div className='view_details_button_container'> 
             <div>
-                {userProfile ==="admin" ?
-                <>  
+                {userProfile === undefined || userProfile.role==='user' ? 
+                <Link to={`/jobDetails/${id}`} className='job_link_item'>
+                    <button type='button' className='view_details_button'>View Details</button>
+                </Link>
+                :
+                <>
+                {userProfile.role ==="admin" &&
+                <div className='admin_view_details_button_container'>  
                     <Link to={`/update/${id}`}>
                         <button type='button' className='edit_details_button'>Edit Job</button>
                     </Link>
@@ -58,14 +63,11 @@ const JobsInfoCard = (props) => {
                         <button type='button' className='view_details_button'>View Details</button>
                     </Link>
                    <button type='button' className='clear_filter_button' onClick={clickOnDelete}>Delete</button>
-                </> 
-                :
-                <Link to={`/jobDetails/${id}`} className='job_link_item'>
-                    <button type='button' className='view_details_button'>View Details</button>
-                </Link>
+                </div> 
                 }
+                </>
+                }    
             </div>
-            
             </div>
         </div>
     </li>

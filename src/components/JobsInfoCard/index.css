@@ -26,7 +26,11 @@
     display: flex;
     align-items: center;
     color: #393838bc;
-    width: 200px;
+}
+.company_size_rupee_location_container {
+    display: flex;
+    align-items: center;
+    color: #393838bc;
 }
 .remote_office_job_type_container {
     color: red;
@@ -54,25 +58,32 @@
 }
 .view_details_button_container {
     display: flex;
-    align-self: flex-end;
+    align-self: flex-end; 
     justify-content: end;
     margin-top: 15px;   
+    /* min-width: 300px; */
 }
 .view_details_button {
-    background-color: #ea4343e7;
+    background-color: #ea4343e7;    
     color: #fff;
     border: 0px;
     font-size: 12px;
-    padding: 5px 10px;
+    padding: 5px 15px;
     cursor: pointer;
     outline: none;
+}
+.admin_view_details_button_container {
+    display: flex;
+    display: flex;
+    align-self: flex-end; 
+    justify-content: end;
 }
 
 .edit_details_button {
     margin-right: 10px;
     background-color: transparent;
     color: #ea4343e7;
-    padding: 5px 10px;
+    padding: 5px 15px;
     cursor: pointer;
     outline: none;
     font-size: 12px;
@@ -83,24 +94,31 @@
     color: inherit;
 }
 
+.job_info_item:hover{
+    border: 6px solid #ea4343e5;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+}
+
 @media screen and (max-width:767px){
     .india_logo {
         height: 25px;
         width: 35px;
-        margin-left: 15px;
+        /* margin-left: 15px; */
     }
     .size_rupee_location_container {
-        width: 250px;
+        /* width: 250px; */
     }
 }
 @media screen and (min-width:992px){
     .size_rupee_location_container {
-        width: 300px;;
+       
     }
 }
 
 @media screen and (min-width:1200px){
     .size_rupee_location_container {
-        width: 400px;;
+        
     }
 }
