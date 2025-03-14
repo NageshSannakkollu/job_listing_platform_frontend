@@ -1,6 +1,10 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+//admin: email: rahul@test.com.    password: rahul@2021 
+
+//user : email: nagesh@test.com    password: nagesh@2021 
+
+This project was created using npx create-react-app@latest myapp (for latest react application)
 
 ## Available Scripts
 
@@ -14,57 +18,48 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+#### `npm install`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs and Install the require and default depencies for project 
+For Toastify messages `react-toastify` package was used.
+For To calculate the time variation from job created to now `date-fns` with formatDistanceToNow Method was used. 
+Installed the `axios` for REST API data fetching.
 
-### `npm run build`
+##### `Explanation`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Datase:SQLite 
+Login Page: For admin,user and unregistered users,Only Admin can Modify the job related queries (like CREATE,MODIFY OR UPDATE,DELETE) the job.
+For User and Unregistred can only view the jobs list and view the details of the job.
+Enter the user specified credentials to store the jwttoken for further actions.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+For Unregistered user view the login and register buttons at nav header section.
+For Admin and User can View Logout and Dashboard buttons with username(with role e.g:admin or user) 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+RegisterPage: Unregistered user can enter the required credetials to register
+Once register success with toastify message at the top-center then it automatically redirect to the login page.
 
-### `npm run eject`
+AddJobPage:Only admin can create a jobs 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Header:Nav Header with links 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+JobDetailsPage:Once the user or admin click on the specific job to view the details in new page; 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+JobInfoCard : Each Job information. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+LandingPage : This is the HomePage or MainPage of the project 
 
-## Learn More
+SelectedSkills:Skills list 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+UpdateJob: Only admin can access this page to edit(update or modiry) the details of job information.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+App.Js:All Projects Routes and Routing are Created.
 
-### Code Splitting
+For Styling individual css files was created with .css extension.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

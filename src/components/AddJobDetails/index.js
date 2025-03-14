@@ -27,7 +27,11 @@ const AddJobDetails = () => {
         event.preventDefault()
         const jobFullDetails = {...jobDetails,selectedSkills}
         console.log("jobDetails:",jobFullDetails)
+<<<<<<< HEAD
         const response = await axios.post("http://localhost:3025/api/jobs",jobFullDetails)
+=======
+        const response = await axios.post("https://job-listing-backend.netlify.app/api/jobs",jobFullDetails)
+>>>>>>> 54cac6bec09a2abf91923fec69bb3f68b0b40227
         console.log("Response:",response.data)
         if(response.data.success){  
             toast.success(response.data.message)
