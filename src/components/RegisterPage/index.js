@@ -11,7 +11,7 @@ const RegisterPage = () => {
     const registerHandler = async(event) => {
         event.preventDefault()
         console.log("registerValues:",registerValues)
-        const response = await axios.post("https://job-listing-backend.netlify.app/api/auth/signup",registerValues)
+        const response = await axios.post("https://job-list-backend.netlify.app/api/auth/signup",registerValues)
         console.log("RegResponse:",response);
         if(response.data.success){
             toast.success(response.data.message)

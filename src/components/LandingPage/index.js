@@ -153,11 +153,7 @@ const LandingPage =  () => {
     useEffect(()=>{
         const getProfileDetails = async() => {
             try {
-<<<<<<< HEAD
-                const response = await fetch("http://localhost:3025/api/auth/profile",{
-=======
-                const response = await fetch("https://job-listing-backend.netlify.app/api/auth/profile",{
->>>>>>> 54cac6bec09a2abf91923fec69bb3f68b0b40227
+                const response = await fetch("https://job-list-backend.netlify.app/api/auth/profile",{
                     method:'GET',
                     headers:{
                         "Authorization":`Bearer ${jwtToken}`,
@@ -176,11 +172,7 @@ const LandingPage =  () => {
         const getJobsList = async() => {
             if(deleteJobFormList){
                 setDeleteJob(false)
-<<<<<<< HEAD
-            const response = await axios.get('http://localhost:3025/api/jobs')
-=======
-            const response = await axios.get('https://job-listing-backend.netlify.app/api/jobs')
->>>>>>> 54cac6bec09a2abf91923fec69bb3f68b0b40227
+            const response = await axios.get('https://job-list-backend.netlify.app/api/jobs')
             setSampleJobsListInfo(response.data)
         }
     }
@@ -191,8 +183,7 @@ const LandingPage =  () => {
 
     const deleteJob = async(id) => {
     // console.log("delete Id:",id)
-<<<<<<< HEAD
-    const response = await axios.delete(`http://localhost:3025/api/jobs/${id}`)
+    const response = await axios.delete(`https://job-list-backend.netlify.app/api/jobs/${id}`)
     
       if(response.data.success){
         toast.success("Delete Job Successfully")
@@ -206,15 +197,6 @@ const LandingPage =  () => {
   const deleteDefaultSkill = (id)=>{
     const filterDeleteSkills = defaultSkills.filter(skill=>skill.id !== id)
     setDefaultSkill(filterDeleteSkills)
-=======
-    axios.delete(`https://job-listing-backend.netlify.app/api/jobs/${id}`)
-    .then(response => {
-      console.log(response)
-      setDeleteJob(true)
-    }).catch(err => {
-      console.log(err)
-    })
->>>>>>> 54cac6bec09a2abf91923fec69bb3f68b0b40227
   }
 
     // console.log("sampleJobsListInfo:",typeof sampleJobsListInfo)
