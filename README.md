@@ -1,9 +1,10 @@
 # Getting Started with Create React App
 
 //admin: email: rahul@test.com.    password: rahul@2021 
+
 //user : email: nagesh@test.com    password: nagesh@2021 
 
-This project was creted using npx create-react-app@latest myapp (for latest react application)
+This project was created using npx create-react-app@latest myapp (for latest react application)
 
 ## Available Scripts
 
@@ -39,21 +40,21 @@ Once register success with toastify message at the top-center then it automatica
 
 AddJobPage:Only admin can create a jobs 
 
-Header:Nav Header with liks 
+Header:Nav Header with links 
 
 JobDetailsPage:Once the user or admin click on the specific job to view the details in new page; 
 
-JobInfoCard : Job lists 
+JobInfoCard : Each Job information. 
 
 LandingPage : This is the HomePage or MainPage of the project 
 
 SelectedSkills:Skills list 
 
-UpdateJob: Only admin can access this page to edit the details of update job information.
+UpdateJob: Only admin can access this page to edit(update or modiry) the details of job information.
 
-App.Js:All Projects Routes and Routing are specified.
+App.Js:All Projects Routes and Routing are Created.
 
-For Styling purpose individual css files was created with .css extension.
+For Styling individual css files was created with .css extension.
 
 
 
