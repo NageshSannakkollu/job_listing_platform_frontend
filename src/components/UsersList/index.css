@@ -1,0 +1,38 @@
+.user_details_main_container {
+    padding: 10px 30px;
+    box-shadow: 0px 0px 17px 0px #e43434d5;
+    border-radius: 16px;
+}
+
+.user_details_heading_titles_container {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+    padding: 10px 8px;
+}
+.users_list_title {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: monospace;
+}
+
+.user_id {
+    width: 10%;
+    font-weight: 600;
+}
+.user_email {
+    width: 30%;
+}
+
+.user_username {
+    width: 20%;
+    
+}
+
+.user_details_with_role_container {
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+}

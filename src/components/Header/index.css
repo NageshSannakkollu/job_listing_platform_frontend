@@ -14,10 +14,10 @@
 }
 .nav_links_container {
     display: flex;
-    width: 50%;
     justify-content: space-between;
     align-items: center;
     list-style-type: none;
+    /* border: 1px solid white; */
 }
 .login_button {
     border: 1px solid #fff;
@@ -49,6 +49,14 @@
     color: #fff;
     font-weight: 700;
 }
+
+.admin_user_header_nav_links_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+    
+}
 .nav_link_item {
     color: #fff;
     text-decoration: none;
@@ -69,6 +77,21 @@
     margin-top: 4px;
     padding-top: 4px;
 }
+
+.login_button_item {
+    list-style-type: none;
+}
+.users_list_button {
+    margin-left: 50px;
+}
+
+.nav_link_with_users_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    width: 300px;
+}
 @media screen and (max-width:767px){
     .nav_links_container {
         width: 55%;
@@ -78,6 +101,12 @@
         border-bottom-right-radius: 30px;
         border-bottom-left-radius: 30px;
         width: 100%;
+    }
+    .user_profile_username_container {
+        margin-right: 60px;
+    }
+    .user_list_item {
+        margin-right: 20px;
     }
 }
 

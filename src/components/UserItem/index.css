@@ -1,0 +1,12 @@
+.user_item_list_container {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin-left: 0px;
+    padding: 10px 8px;
+}
+
+.username_item {
+    text-transform: capitalize;
+    font-weight: 600;
+}
