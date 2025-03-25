@@ -21,7 +21,7 @@ const UpdateJob = () => {
     useEffect(() => {
         const getSpecificJOb = async() => {
             try {
-                const response = await axios.get(`https://job-list-backend.netlify.app/api/jobs/${id}`)
+                const response = await axios.get(`http://localhost:3025/api/jobs/${id}`)
                 const data = await response.data;
                 console.log("Data:",data)
                 setJobValues([data])
@@ -36,7 +36,7 @@ const UpdateJob = () => {
         event.preventDefault()
         const jobDetailsInfo = jobValues[0]
         console.log("jobDetailsInfo:",jobDetailsInfo)
-        const response = await axios.put(`https://job-list-backend.netlify.app/api/jobs/${id}`,jobValues[0])
+        const response = await axios.put(`http://localhost:3025/api/jobs/${id}`,jobValues[0])
             const data = await response.data;
             if(data.success){
                 toast.success(data.message)

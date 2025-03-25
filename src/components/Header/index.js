@@ -35,7 +35,7 @@ const Header = (props) => {
               <li>
                  <button type='button' className='login_button' onClick={logoutButton}>Logout</button>
               </li>
-            <Link to="/register">
+            <Link to="/">
               <li>
                   <button type='button' className='register_button'>Dashboard</button>
               </li>
@@ -51,7 +51,7 @@ const Header = (props) => {
               <li>
                  <button type='button' className='login_button' onClick={logoutButton}>Logout</button>
               </li>
-            <Link to="/register">
+            <Link to="/">
               <li>
                   <button type='button' className='register_button'>Dashboard</button>
               </li>

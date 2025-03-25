@@ -18,7 +18,7 @@ const JobDetailsPage = () => {
   useEffect(() => {
     const getProfileDetails = async() => {
             try {
-                const response = await fetch("https://job-list-backend.netlify.app/api/auth/profile",{
+                const response = await fetch("http://localhost:3025/api/auth/profile",{
                     method:'GET',
                     headers:{
                         "Authorization":`Bearer ${jwtToken}`,
@@ -37,7 +37,7 @@ const JobDetailsPage = () => {
 
     const getSpecificJob = async() => {
       try {
-          const response = await axios.get(`https://job-list-backend.netlify.app/api/jobs/${id}`,{
+          const response = await axios.get(`http://localhost:3025/api/jobs/${id}`,{
             method:"GET",
             headers:{
                         "Authorization":`Bearer ${jwtToken}`,

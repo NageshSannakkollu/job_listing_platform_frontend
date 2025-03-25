@@ -14,7 +14,7 @@ const LoginPage = () => {
     const loginHandler = async(event) => {
         event.preventDefault()
         // console.log("LoginDetails:",loginValues)
-        const response = await axios.post("https://job-list-backend.netlify.app/api/auth/login",loginValues)
+        const response = await axios.post("http://localhost:3025/api/auth/login",loginValues)
         console.log("Response:",response.data)
         if(response.data.success){  
             Cookies.set('jwtToken', response.data.jwtToken, {expires: 30})

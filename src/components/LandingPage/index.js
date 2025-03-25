@@ -153,7 +153,7 @@ const LandingPage =  () => {
     useEffect(()=>{
         const getProfileDetails = async() => {
             try {
-                const response = await fetch("https://job-list-backend.netlify.app/api/auth/profile",{
+                const response = await fetch("http://localhost:3025/api/auth/profile",{
                     method:'GET',
                     headers:{
                         "Authorization":`Bearer ${jwtToken}`,
@@ -172,7 +172,7 @@ const LandingPage =  () => {
         const getJobsList = async() => {
             if(deleteJobFormList){
                 setDeleteJob(false)
-            const response = await axios.get('https://job-list-backend.netlify.app/api/jobs')
+            const response = await axios.get('http://localhost:3025/api/jobs')
             setSampleJobsListInfo(response.data)
         }
     }
@@ -183,7 +183,7 @@ const LandingPage =  () => {
 
     const deleteJob = async(id) => {
     // console.log("delete Id:",id)
-    const response = await axios.delete(`https://job-list-backend.netlify.app/api/jobs/${id}`)
+    const response = await axios.delete(`http://localhost:3025/api/jobs/${id}`)
     
       if(response.data.success){
         toast.success("Delete Job Successfully")
