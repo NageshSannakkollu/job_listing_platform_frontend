@@ -5,7 +5,7 @@ import "./index.css"
 import axios from 'axios'
 import { toast } from 'react-toastify'
 const RegisterPage = () => {
-    const [registerValues,setRegValues] = useState({name:"",email:'',password:''})
+    const [registerValues,setRegValues] = useState({username:"",email:'',password:''})
     const navigate = useNavigate()
 
     const registerHandler = async(event) => {
@@ -32,7 +32,7 @@ const RegisterPage = () => {
                 <h2>Create an account</h2>
                 <p className='job_finder_para'>Your Personal job finder is here</p>
             </div>
-                <input type='text' placeholder='Name' onChange={e => setRegValues({...registerValues,name:e.target.value})} className='email_input' required/>
+                <input type='text' placeholder='Name' onChange={e => setRegValues({...registerValues,username:e.target.value})} className='email_input' required/>
                 <input type='email' placeholder='Email' onChange={e => setRegValues({...registerValues,email:e.target.value})} className='email_input' required/>
                 <input type='number' placeholder='Mobile' onChange={e => setRegValues({...registerValues,mobile:e.target.value})} className='email_input' required/>
                 <input type='text' placeholder='Password' onChange={e => setRegValues({...registerValues,password:e.target.value})} className='email_input' required/>

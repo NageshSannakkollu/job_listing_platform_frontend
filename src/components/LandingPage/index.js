@@ -155,19 +155,6 @@ const LandingPage =  () => {
                 </>
                    
             }
-            {/* {userProfile.role==="admin" ? 
-            <>
-                <Link to="/addJob">
-                    <button type='button' className='apply_filer_button'>+Add Job</button>
-                </Link>
-                    <button type='button' className='clear_filter_button'>Clear</button>
-                </>
-                :
-                <>
-                    <button type='button' className='apply_filer_button'>Apply Filter</button>
-                    <button type='button' className='clear_filter_button' onClick={clickOnClear}>Clear</button>
-                </>
-            } */}
                 </div>
               </div>
             </div>
